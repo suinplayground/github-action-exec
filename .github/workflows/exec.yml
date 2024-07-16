@@ -1,4 +1,4 @@
-name: Custom Command Workflow
+name: exec
 
 on:
   workflow_dispatch:
@@ -17,9 +17,8 @@ on:
         required: true
 
 jobs:
-  run-command:
+  exec:
     runs-on: ${{ github.event.inputs.runner }}
     steps:
-      - name: Run custom command
-        run: ${{ github.event.inputs.command }}
+      - run: ${{ github.event.inputs.command }}
         shell: bash
