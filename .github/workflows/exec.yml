@@ -1,0 +1,28 @@
+name: Custom Command Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      runner:
+        description: 'Choose the runner'
+        type: choice
+        options:
+        - ubuntu-latest
+        - windows-latest
+        - macos-latest
+        required: true
+        default: 'ubuntu-latest'
+      command:
+        description: 'Command to run (including arguments)'
+        required: true
+
+jobs:
+  run-command:
+    runs-on: ${{ github.event.inputs.runner }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run custom command
+        run: ${{ github.event.inputs.command }}
+        shell: bash
