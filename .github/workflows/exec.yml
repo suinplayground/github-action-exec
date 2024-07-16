@@ -20,5 +20,6 @@ jobs:
   exec:
     runs-on: ${{ github.event.inputs.runner }}
     steps:
+      - uses: docker/setup-buildx-action@v1
       - run: ${{ github.event.inputs.command }}
         shell: bash
