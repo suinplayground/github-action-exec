@@ -20,9 +20,6 @@ jobs:
   run-command:
     runs-on: ${{ github.event.inputs.runner }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
       - name: Run custom command
         run: ${{ github.event.inputs.command }}
         shell: bash
